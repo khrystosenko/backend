@@ -23,5 +23,5 @@ class Feature(SortableMixin):
     image_url = models.CharField(max_length=128)
 
 
-    def __str__(self):
-        return '{} ({})'.format(self.title, get_feature_type(self.type))
+    def __unicode__(self):
+        return u'{} ({})'.format(self.title, get_feature_type(self.type))
