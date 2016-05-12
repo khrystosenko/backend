@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
+# Site ID
+SITE_ID = 1
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,10 +42,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'adminsortable',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
+
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitch',
 
     'apps.email',
     'apps.features',
@@ -165,6 +177,11 @@ LANGUAGES = (
     ('ru', gettext('Russian')),
 )
 
+
 VOTES_START_TIME = 0
+
+# Allauth configutation
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 from local_settings import *

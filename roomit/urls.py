@@ -22,7 +22,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^subscribe/', include('apps.subscribe.urls')),
-    url(r'^features/', include('apps.features.urls'))
+    url(r'^features/', include('apps.features.urls')),
+    url(r'^auth/', include('apps.auth.urls')),
 ]
 
 if settings.TEST_SERVER:
