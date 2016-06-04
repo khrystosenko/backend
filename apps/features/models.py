@@ -1,14 +1,13 @@
 from django.db import models
 from adminsortable.models import SortableMixin
 
-FEATURE_TYPES = (
-    (0, 'how-it-works'),
-    (1, 'battle')
-)
+HOW_IT_WORKS = 0
+BATTLE = 1
 
-def get_feature_type(value):
-    for i, title in FEATURE_TYPES:
-        if i == value: return title
+FEATURE_TYPES = {
+    HOW_IT_WORKS: 'how-it-works',
+    BATTLE: 'battle'
+}
 
 
 class Feature(SortableMixin):
@@ -17,11 +16,15 @@ class Feature(SortableMixin):
         ordering = ['order']
 
     order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
-    type = models.IntegerField(choices=FEATURE_TYPES, db_index=True)
+    type = models.IntegerField(choices=FEATURE_TYPES.items(), db_index=True)
     title = models.CharField(max_length=128)
     description = models.TextField()
     image_url = models.CharField(max_length=128)
 
-
     def __unicode__(self):
-        return u'{} ({})'.format(self.title, get_feature_type(self.type))
+        return u'{} ({})'.format(self.title, FEATURE_TYPES.get(self.type))
+
+
+class FeatureVote(models.Model):
+    email = models.EmailField(blank=True)
+    feature = models.ForeignKey(Feature)

@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+TEST_SERVER = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -81,7 +82,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'roomit.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -140,6 +140,7 @@ MAILCHIMP_API_KEY = ''
 MAILCHIMP_DATACENTER = ''
 MAILCHIMP_USER = ''
 MAILCHIMP_ROOMIT_LIST_ID = ''
+MAILCHIMP_BATTLE_LIST_ID = ''
 
 # Email settings
 
@@ -163,5 +164,7 @@ LANGUAGES = (
     ('en', gettext('English')),
     ('ru', gettext('Russian')),
 )
+
+VOTES_START_TIME = 0
 
 from local_settings import *
