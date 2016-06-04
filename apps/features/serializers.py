@@ -19,7 +19,7 @@ class FeatureSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Feature
-        fields = ('type', 'title', 'description', 'image_url', 'votes')
+        fields = ('id', 'type', 'title', 'description', 'image_url', 'votes')
 
 
 class FeatureVoteSerializer(serializers.ModelSerializer):
